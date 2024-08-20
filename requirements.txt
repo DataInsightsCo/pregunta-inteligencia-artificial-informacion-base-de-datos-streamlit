@@ -1,0 +1,3 @@
+Pandas==2.2.2
+Seaborn==0.12.2
+Matplotlib==3.7.5
