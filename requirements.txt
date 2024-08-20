@@ -1,4 +1,6 @@
-Pandas==2.2.2
-Seaborn==0.12.2
-Matplotlib==3.7.5
-mysql.connector==8.4.0
+streamlit
+pandas
+seaborn
+matplotlib
+mysql-connector-python
+python-dotenv
