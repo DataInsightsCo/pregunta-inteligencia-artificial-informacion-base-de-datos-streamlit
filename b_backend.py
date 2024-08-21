@@ -1,24 +1,25 @@
 import re
 import mysql.connector
-from openai import OpenAI
-from dotenv import load_dotenv
+import openai
 import os
+import streamlit as st
 
 
-# Cargar variables de entorno desde el archivo .env
-load_dotenv()
 
-# Configuración del cliente de OpenAI
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+# Configuración del cliente de OpenAI usando st.secrets
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-# Configuración de la base de datos
+# Configuración de la base de datos usando st.secrets
 db_config = {
-    'host': os.getenv('DB_HOST'),
-    'database': os.getenv('DB_DATABASE'),
-    'user': os.getenv('DB_USER'),
-    'password': os.getenv('DB_PASSWORD'),
-    'port': int(os.getenv('DB_PORT'))
+    'host': st.secrets["DB_HOST"],
+    'database': st.secrets["DB_DATABASE"],
+    'user': st.secrets["DB_USER"],
+    'password': st.secrets["DB_PASSWORD"],
+    'port': int(st.secrets["DB_PORT"])
 }
+
+# Verificar si la clave está presente
+print("API Key cargada:", os.getenv('OPENAI_API_KEY'))
 
 # Función para obtener SQL de OpenAI
 def obtener_sql_de_openai(pregunta):

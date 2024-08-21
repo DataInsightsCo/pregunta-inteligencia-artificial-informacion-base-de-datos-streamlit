@@ -7,6 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
+
 # Configuración de la página
 st.set_page_config(page_icon="rpa.png", page_title="SUI Robotic - DataInsights")
 
