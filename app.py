@@ -117,7 +117,8 @@ def click():
 # Mostrar el formato principal solo si está en el estado inicial o después de "Haz otra pregunta"
 if st.session_state.show_main:
     # Agregar logo
-    st.image("logo.png", width=100)  # Ajusta la ruta y el tamaño según sea necesario
+    with open("logo.png", "rb") as file:  
+    st.image(file, width=100)                # Ajusta la ruta y el tamaño según sea necesario
 
     # Título personalizado
     st.markdown(
