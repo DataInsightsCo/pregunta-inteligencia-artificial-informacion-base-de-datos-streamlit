@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import io
 import b_backend
-import pywhatkit
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -42,31 +41,6 @@ def exportar():
             file_name="consulta_resultado.csv",
             mime="text/csv"
         )
-
-# Función para enviar el resultado por WhatsApp usando solo pywhatkit
-def enviar_whatsapp():
-    st.write("Se enviarán los datos a un número de WhatsApp.")
-    
-    # Solicitar el número de teléfono al usuario
-    phone_number = st.text_input('Dame el número de celular (con código de país, sin espacios ni símbolos):', key='phone', help='Ejemplo: 573001234567')
-    
-    if phone_number and st.session_state.csv_data:
-        mensaje = st.session_state.csv_data
-        
-        # Intentar enviar el mensaje por WhatsApp usando pywhatkit
-        try:
-            # Enviar el mensaje (esto abre WhatsApp Web, escribe el mensaje pero no hace clic en "Enviar")
-            pywhatkit.sendwhatmsg_instantly(f"+{phone_number}", mensaje)
-            
-            st.success(f"Mensaje enviado exitosamente en la conversación con {phone_number}.")
-            #st.write("Por favor, verifica los datos y haz clic en 'Enviar' en WhatsApp Web.")
-
-        except Exception as e:
-            st.error(f"Error al enviar el mensaje: {str(e)}")
-    elif not st.session_state.csv_data:
-        st.error("No hay datos disponibles para enviar por WhatsApp.")
-    else:
-        st.warning("Por favor, introduce un número de celular válido.")
 
 # Función para generar gráficos dinámicos
 def generar_grafica(df):
@@ -185,8 +159,6 @@ if not st.session_state.show_main and st.session_state.pregs:
 
     if opcion == "Exportar a CSV":
         exportar()
-    elif opcion == "Enviar a WhatsApp":
-        enviar_whatsapp()
     elif opcion == "Otra Pregunta":
         reset_app()  # Llamar a la función de reinicio
         st.success("**Confirma** - Selecciónalo de nuevo.")
