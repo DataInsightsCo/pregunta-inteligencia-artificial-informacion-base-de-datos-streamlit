@@ -117,7 +117,7 @@ def click():
 # Mostrar el formato principal solo si está en el estado inicial o después de "Haz otra pregunta"
 if st.session_state.show_main:
     # Agregar logo
-    st.image("C:/Users/DELL VOSTRO/Python_inicio/Datainsights/enerBIT/logo.png", width=100)  # Ajusta la ruta y el tamaño según sea necesario
+    st.image("logo.png", width=100)  # Ajusta la ruta y el tamaño según sea necesario
 
     # Título personalizado
     st.markdown(
@@ -154,7 +154,7 @@ if not st.session_state.show_main and st.session_state.pregs:
     st.write("**Selecciona una opción:**")
     opcion = st.selectbox(
         "Elige una acción a realizar:",
-        ("Exportar a CSV", "Enviar a WhatsApp", "Otra Pregunta")
+        ("Exportar a CSV", "Otra Pregunta")
     )
 
     if opcion == "Exportar a CSV":
